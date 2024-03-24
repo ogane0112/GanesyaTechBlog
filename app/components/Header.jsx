@@ -45,7 +45,7 @@ function Header() {
   const [navbarOpen, setNavbarOpen] = useState(false);
 
   return (
-    <header >
+    <header className='z-10' >
       <Image src="/header.png" width={1440} height={250} alt="Picture of the author" priority={false} />
       <nav className="mx-auto border-[#33353F] top-0 left-0 right-0 z-10 bg-white md:border  ">
       <div className="flex container lg:py-4 flex-wrap items-center justify-between mx-auto px-4 py-2">
