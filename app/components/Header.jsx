@@ -1,57 +1,53 @@
-"use client"
-import React, { useState } from 'react'
-import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
+import React from 'react'
 import Image from 'next/image';
-import SmMenu from "@/app/components/SmMenu"
 import NavLink from './NavLink';
 const navLinks = [
   {
     title: "ホーム",
-    path: "/",
+    path: `/`,
   },
   {
     title: "機械学習",
-    path: "/ai",
+    path: `/list/機械学習`,
   },
   {
     title: "読書メモ",
-    path: "/read",
+    path: `/list/読書メモ`,
   }, 
   {
     title: "ツール",
-    path: "/tool",
+    path: `/list/ツール`,
   },
  
   {
     title: "アルゴリズム",
-    path: "/algo",
+    path: `/list/アルゴリズム`,
   },
   {
     title: "セキュリティ",
-    path: "/security",
+    path: `/list/セキュリティ`,
   },
   {
     title: "工作",
-    path: "/make",
+    path: `/list/工作`,
   },
   {
     title: "プログラミング",
-    path: "/program",
+    path: `/list/プログラミング`,
   },
   {
     title: "その他",
-    path: "/about",
+    path: `/list/その他`,
   },
 ];
 
 function Header() {
 
-  const [navbarOpen, setNavbarOpen] = useState(false);
 
   return (
     <header className='z-10' >
       <Image src="/header.png" width={1440} height={300} alt="Picture of the author" priority={false} />
-      <nav className="mx-auto border-[#33353F] top-0 left-0 right-0 z-10 bg-white md:border  ">
+      <nav className="mx-auto border-[#33353F] top-0 left-0 right-0 z-10 bg-white md:border ">
       <div className="flex container lg:py-4 flex-wrap items-center justify-center mx-auto px-auto">
          
       <div className="mobile-menu block md:hidden">
