@@ -1,4 +1,5 @@
 /* 見出し(h1~h6)のスタイリング */
+.markdown-content{
 h1, h2, h3, h4, h5, h6 {
     font-weight: bold;
     margin-bottom: 0.5rem;
@@ -71,4 +72,4 @@ h1, h2, h3, h4, h5, h6 {
     blockquote {
       padding: 0.5rem;
     }
-  }
+  }}

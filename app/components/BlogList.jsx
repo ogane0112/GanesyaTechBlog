@@ -1,9 +1,10 @@
 import Image from 'next/image';
 import { getAllPosts } from '../../lib/notion/notion'
 import Link from 'next/link';
+import Profile from "./Profile"
 
-//10秒ごとに更新する関数
-export const revalidate = 10;
+//一時間ごとにキャッシュをリセットして更新(ISR)
+export const revalidate = 3600;
 
 export default async function Home() {
   
@@ -13,8 +14,11 @@ export default async function Home() {
 
   return (
     <div className='container mx-auto'>
-      <main className="flex min-h-screen  flex-col items-center justify-center p-8 lg:w-5/6 mx-auto">
-        <div className="grid gap-8 p-3 md:p-10 pt-5 ">
+      <main className="grid grid-cols-1 lg:grid-cols-4 gap-8 min-h-screen p-8">
+        <div className="lg:col-span-1">
+          <Profile />
+        </div>
+        <div className="grid gap-8    lg:col-span-2 ">
           {postsProperties.map((post, index) => (
             <Link href={`/blog/${post.uuid}`} key={index} className="bg-white border rounded-lg p-10 shadow-lg transition-shadow hover:shadow-xl">
               {console.log(post.types.multi_select[0].name)}
@@ -68,6 +72,9 @@ export default async function Home() {
              
             </Link>
           ))}
+        </div>
+        <div className="lg:col-span-1">
+          <Profile />
         </div>
       </main>
   </div>
