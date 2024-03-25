@@ -1,12 +1,12 @@
 import Link from "next/link";
-//なんかaタグにしたら遷移するようになったお
+
 const NavLink = ({ href, title }) => {
                 let color;
                 switch (title) {
                   case 'プログラミング':
                     color = 'bg-yellow-300 text-white';
                     break;
-                  case '情報セキュリティ':
+                  case 'セキュリティ':
                     color = 'bg-blue-500 text-white';
                     break;
                   case '機械学習':
@@ -15,7 +15,7 @@ const NavLink = ({ href, title }) => {
                   case "読書メモ":
                     color='bg-orange-500 text-white'
                     break;
-                  case "お役立ちツール":
+                  case "ツール":
                     color = 'bg-teal-500 text-white'
                     break;
                   case "アルゴリズム":
@@ -31,7 +31,7 @@ const NavLink = ({ href, title }) => {
   return (
     <Link
       href={href}
-      className={`block ${color} rounded-md  font-semibold py-2 px-3 text-xs lg:text-sm   hover:text-zinc-500 `}>
+      className={`block ${color} rounded-md  font-semibold py-2 px-3 text-center text-sm  hover:text-zinc-500 `}>
       {title}
     </Link>
   );

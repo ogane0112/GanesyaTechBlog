@@ -85,9 +85,157 @@ interface NotionPost {
     const response = await notion.pages.retrieve({ page_id: pageId });
     const pageInfo = response.properties
     console.log(pageInfo)
-  
+    
     const title = pageInfo.title.title[0]?.plain_text
     const date = pageInfo.timestamp.created_time;
-    const author = pageInfo.author.select.name
+    const author = pageInfo.author.select.name;
     return { title, date, author }
   }
+
+
+  
+  //fileterする関数！
+  export async function getFilterPosts(filterData:any): Promise<any>  {
+    const response = await notion.databases.query({
+      database_id: process.env.DATABASE_ID,
+      filter: {
+        and: [
+          {
+            property: 'checked',
+            checkbox: {
+              equals: true,
+            }
+          },
+          {
+            property: 'tags',
+            multi_select: {
+              contains: filterData
+            }
+          }
+        ]
+      },
+      sorts: [
+        {
+          property: 'ID',
+          direction: 'descending',
+        },
+      ]
+    })
+  }
+
+    //アルゴリズムのタグでfileterを書ける関数
+    export async function getAlgoPosts(): Promise<any>  {
+      const response = await notion.databases.query({
+        database_id: process.env.DATABASE_ID,
+        filter: {
+          and: [
+            {
+              property: 'checked',
+              checkbox: {
+                equals: true,
+              }
+            },
+            {
+              property: 'tags',
+              multi_select: {
+                contains: '機械学習'
+              }
+            }
+          ]
+        },
+        sorts: [
+          {
+            property: 'ID',
+            direction: 'descending',
+          },
+        ]
+      })
+    }
+
+        //のタグでfileterを書ける関数
+        export async function getToolPosts(): Promise<any>  {
+          const response = await notion.databases.query({
+            database_id: process.env.DATABASE_ID,
+            filter: {
+              and: [
+                {
+                  property: 'checked',
+                  checkbox: {
+                    equals: true,
+                  }
+                },
+                {
+                  property: 'tags',
+                  multi_select: {
+                    contains: '機械学習'
+                  }
+                }
+              ]
+            },
+            sorts: [
+              {
+                property: 'ID',
+                direction: 'descending',
+              },
+            ]
+          })
+        }
+
+
+        //工作でfilterする！
+        export async function getMakePosts(): Promise<any>  {
+          const response = await notion.databases.query({
+            database_id: process.env.DATABASE_ID,
+            filter: {
+              and: [
+                {
+                  property: 'checked',
+                  checkbox: {
+                    equals: true,
+                  }
+                },
+                {
+                  property: 'tags',
+                  multi_select: {
+                    contains: '機械学習'
+                  }
+                }
+              ]
+            },
+            sorts: [
+              {
+                property: 'ID',
+                direction: 'descending',
+              },
+            ]
+          })
+        }
+
+         //プログラミングでfilterする！
+         export async function getProgramPosts(): Promise<any>  {
+          const response = await notion.databases.query({
+            database_id: process.env.DATABASE_ID,
+            filter: {
+              and: [
+                {
+                  property: 'checked',
+                  checkbox: {
+                    equals: true,
+                  }
+                },
+                {
+                  property: 'tags',
+                  multi_select: {
+                    contains: '機械学習'
+                  }
+                }
+              ]
+            },
+            sorts: [
+              {
+                property: 'ID',
+                direction: 'descending',
+              },
+            ]
+          })
+        }

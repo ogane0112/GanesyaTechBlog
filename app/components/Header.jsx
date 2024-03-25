@@ -18,7 +18,7 @@ const navLinks = [
     path: "/read",
   }, 
   {
-    title: "お役立ちツール",
+    title: "ツール",
     path: "/tool",
   },
  
@@ -27,7 +27,7 @@ const navLinks = [
     path: "/algo",
   },
   {
-    title: "情報セキュリティ",
+    title: "セキュリティ",
     path: "/security",
   },
   {
@@ -38,6 +38,10 @@ const navLinks = [
     title: "プログラミング",
     path: "/program",
   },
+  {
+    title: "その他",
+    path: "/about",
+  },
 ];
 
 function Header() {
@@ -46,39 +50,31 @@ function Header() {
 
   return (
     <header className='z-10' >
-      <Image src="/header.png" width={1440} height={250} alt="Picture of the author" priority={false} />
+      <Image src="/header.png" width={1440} height={300} alt="Picture of the author" priority={false} />
       <nav className="mx-auto border-[#33353F] top-0 left-0 right-0 z-10 bg-white md:border  ">
-      <div className="flex container lg:py-4 flex-wrap items-center justify-between mx-auto px-4 py-2">
+      <div className="flex container lg:py-4 flex-wrap items-center justify-center mx-auto px-auto">
          
-        <div className="mobile-menu block md:hidden">
-          {!navbarOpen ? (
-            <button
-              onClick={() => setNavbarOpen(true)}
-              className=" bg-black flex items-center px-3 py-2 border rounded border-black text-slate-200 hover:text-white hover:border-white"
-            >
-              <Bars3Icon className="h-5 w-5"  />
-            </button>
-          ) : (
-            <button
-              onClick={() => setNavbarOpen(false)}
-              className="bg-black  flex items-center px-3 py-2 border rounded border-black text-slate-200 hover:text-blue hover:border-white"
-            >
-              <XMarkIcon className="h-5 w-5 bg-black-100"  />
-            </button>
-          )}
-        </div>
-        <div className="menu hidden md:block w-auto" id="navbar">
-          <ul className="flex p-4 md:p-0 md:flex-row md:space-x-8 mt-0">
+      <div className="mobile-menu block md:hidden">
+          <ul className="flex flex-wrap p-0 mt-0">
+            {navLinks.map((link, index) => (
+              <li key={index} className="w-1/3">
+                <NavLink href={link.path} title={link.title} />
+              </li>
+            ))}
+          </ul>
+      </div>
+
+      <div className="menu hidden md:block w-auto" id="navbar">
+          <ul className="flex p-4 md:p-0 md:flex-row md:space-x-8 mt-0 text-xs ">
 
             {navLinks.map((link, index) => (
-              <li key={index}>
+              <li key={index} className='text-center'>
                 <NavLink href={link.path} title={link.title} />
               </li>
             ))}
           </ul>
         </div>
       </div>
-      {navbarOpen ? <SmMenu links={navLinks} /> : null}
     </nav>
     </header>
   )

@@ -3,6 +3,7 @@ import ReactMarkdown from 'react-markdown';
 import CodeBlock from '@/app/components/CodeBlock';
 import "@/app/blog/style.css"
 import Profile from "@/app/components/Profile"
+import Breadcrumbs  from "@/app/components/BreadCrumbs"
 
 // コードの```を消すための関数
 const removeCodeFences = (content) => {
@@ -24,6 +25,8 @@ const MarkdownContent = ({ content }) => (
 );
 
 export default async function Page({ params }) {
+
+  
   const pageContents = await getPageContent(params.id)
   const pageInfo = await getPageInfo(params.id)
 
@@ -31,6 +34,7 @@ export default async function Page({ params }) {
     <>
       <div className="container mx-auto lg:flex lg:flex-row lg:space-x-8">
         <div className="lg:w-3/4 px-5 bg-white">
+        <Breadcrumbs />
           <div className=" text-3xl font-semibold text-center ">
             <p className=" my-5">{pageInfo.title}</p>
           </div>

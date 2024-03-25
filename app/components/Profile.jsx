@@ -24,16 +24,16 @@ const ProfileComponent = () => {
     <div>
       <h3 className="text-lg font-semibold mb-2">SNS</h3>
       <div className="flex flex-wrap">
-        <span className="bg-gray-200 text-gray-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded mb-2">
+        <span className="bg-red-200 text-gray-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded mb-2">
           React
         </span>
-        <span className="bg-gray-200 text-gray-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded mb-2">
+        <span className="bg-blue-200 text-gray-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded mb-2">
           JavaScript
         </span>
-        <span className="bg-gray-200 text-gray-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded mb-2">
+        <span className="bg-yellow-200 text-gray-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded mb-2">
           Tailwind CSS
         </span>
-        <span className="bg-gray-200 text-gray-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded mb-2">
+        <span className="bg-green-200 text-gray-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded mb-2">
           Next.js
         </span>
       </div>
