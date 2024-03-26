@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { getFilterPosts,getOtherPosts } from '@/lib/notion/notion.ts'
 import Link from 'next/link';
 import Profile from "@/app/components/Profile"
-
+import ContentTitle from "@/app/components/ContentTitle"
 //一時間ごとにキャッシュをリセットして更新(ISR)
 export const revalidate = 3600;
 
@@ -21,6 +21,7 @@ export default async function Home({params}) {
     <main className="flex flex-col lg:flex-row min-h-screen p-8 lg:space-x-8">
 
       <div className="grid gap-8 lg:w-3/4">
+        <ContentTitle type ={decodedString} />
         {postsProperties.map((post, index) => (
           <Link href={`/blog/${post.uuid}`} key={index} className="bg-white border rounded-lg p-10 shadow-lg transition-shadow hover:shadow-xl">
             {console.log(post.types.multi_select[0].name)}

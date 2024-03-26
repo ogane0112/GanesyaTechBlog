@@ -92,9 +92,9 @@ interface NotionPost {
     return { title, date, author }
   }
 
-  
-  //部分一致検索をする関数
-  export async function getSearchPosts(searchData:any): Promise<any>  {
+
+  //最新の3つの記事を取得するコード！！！
+  export async function getRecentPosts(): Promise<any>  {
       const response = await notion.databases.query({
         database_id: process.env.DATABASE_ID,
         filter: {
@@ -104,14 +104,7 @@ interface NotionPost {
               checkbox: {
                 equals: true,
               }
-            },
-            {
-              property: "title", // タイトルでの部分一致検索
-              title: {
-                contains: searchData,
-              },
-            },
-            
+            },       
           ]
         },
         sorts: [
@@ -122,9 +115,11 @@ interface NotionPost {
         ]
       })
       const posts = response.results
+       // 直近の3つの記事のみを取得
+      const recentPosts = posts.slice(0, 3);
       console.log(posts)
   
-      const postsProperties = posts.map((post:any) => {
+      const postsProperties = recentPosts.map((post:any) => {
           
         // レコードidの取り出し
         const uuid = post.id

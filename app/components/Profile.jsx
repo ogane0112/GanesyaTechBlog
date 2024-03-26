@@ -3,7 +3,7 @@ import Link from "next/link";
 const ProfileComponent = () => {
   return (
     <>
-    <div className="bg-white rounded-lg shadow-md p-10 menu  lg:block">
+    <div className="bg-white rounded-lg mt-10 shadow-md p-10 menu  lg:mt-0 lg:block">
     <div className="flex items-center justify-center mb-4">
       <Image
         src="/profile.png" 

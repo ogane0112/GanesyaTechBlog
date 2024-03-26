@@ -4,6 +4,7 @@ import CodeBlock from '@/app/components/CodeBlock';
 import "@/app/blog/style.css"
 import Profile from "@/app/components/Profile"
 import Breadcrumbs  from "@/app/components/BreadCrumbs"
+import Recent from "@/app/components/Recent"
 
 // コードの```を消すための関数
 const removeCodeFences = (content) => {
@@ -59,11 +60,13 @@ export default async function Page({ params }) {
               )
             })}
           </div>
+          <Recent />
         </div>
         <div className="lg:w-1/4 lg:ml-auto lg:sticky lg:top-0 lg:h-screen lg:overflow-auto">
           <Profile />
         </div>
       </div>
+     
     </>
   )
 }
