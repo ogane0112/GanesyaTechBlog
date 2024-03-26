@@ -92,8 +92,67 @@ interface NotionPost {
     return { title, date, author }
   }
 
-
   
+  //部分一致検索をする関数
+  export async function getSearchPosts(searchData:any): Promise<any>  {
+      const response = await notion.databases.query({
+        database_id: process.env.DATABASE_ID,
+        filter: {
+          and: [
+            {
+              property: 'checked',
+              checkbox: {
+                equals: true,
+              }
+            },
+            {
+              property: "title", // タイトルでの部分一致検索
+              title: {
+                contains: searchData,
+              },
+            },
+            
+          ]
+        },
+        sorts: [
+          {
+            property: 'ID',
+            direction: 'descending',
+          },
+        ]
+      })
+      const posts = response.results
+      console.log(posts)
+  
+      const postsProperties = posts.map((post:any) => {
+          
+        // レコードidの取り出し
+        const uuid = post.id
+  
+        const id = post.properties.ID. unique_id.number
+    
+        // titleプロパティの取り出し
+        const title = post.properties.title.title[0]?.plain_text;
+    
+        // dateプロパティの取り出し
+        const date = post.properties.timestamp.created_time;
+        const modifiedData = date.split('T')[0];
+    
+        // multi_selectプロパティの取り出し（例：types）
+        const types = post.properties.type;
+    
+        // filesプロパティの取り出し（例：file）
+        const files = post.properties.file.files.map((file:any) => file.file.url);
+    
+        // peopleプロパティの取り出し（例：author）
+        const author = post.properties.author.name;
+    
+        // プロパティをまとめたオブジェクトを返す
+        return { uuid,id, title, modifiedData, types, files, author };
+      });
+      return postsProperties
+    }
+ 
   //fileterする関数！
   export async function getFilterPosts(filterData:any): Promise<any>  {
     const response = await notion.databases.query({

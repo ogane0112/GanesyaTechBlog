@@ -8,6 +8,12 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "ガネーシャテックブログ",
   description: "技術に関する事を発信しています！",
+  verification: {
+    google: 'google',
+    yandex: 'yandex',
+    yahoo: 'yahoo',
+  },
+
 };
 
 export default function RootLayout({

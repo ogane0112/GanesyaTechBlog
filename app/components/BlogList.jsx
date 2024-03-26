@@ -3,8 +3,6 @@ import { getAllPosts } from '../../lib/notion/notion'
 import Link from 'next/link';
 import Profile from "./Profile"
 
-//一時間ごとにキャッシュをリセットして更新(ISR)
-export const revalidate = 3600;
 
 export default async function Home() {
   const postsProperties = await getAllPosts()
