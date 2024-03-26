@@ -9,12 +9,13 @@ export const metadata: Metadata = {
   title: "ガネーシャテックブログ",
   description: "技術に関する事を発信しています！",
   verification: {
-    google: 'google',
+    google: '_BxN-o63Dnkf6J_nePzoJikU0G-6Fls3VtqtnpIfVQA',
     yandex: 'yandex',
     yahoo: 'yahoo',
   },
 
 };
+<meta name="google-site-verification" content="_BxN-o63Dnkf6J_nePzoJikU0G-6Fls3VtqtnpIfVQA" />
 
 export default function RootLayout({
   children,
