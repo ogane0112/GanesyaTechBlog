@@ -1,6 +1,8 @@
 export default function sitemap() {
+
     //domain変更の時は,ここを変更するのみで良き！
     const domain = "https://ganesya-tech-blog.vercel.app/"
+    
     return [
       {
         url: `${domain}`,
