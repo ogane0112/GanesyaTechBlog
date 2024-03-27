@@ -4,9 +4,10 @@ import "./globals.css";
 import Header from "@/app/components/Header"
 
 const inter = Inter({ subsets: ["latin"] });
-
+const url = "https://www.ganesyatech.com/"
 
 export const metadata: Metadata = {
+  metadataBase:new URL(url),
   title: "ガネーシャテックブログ",
   description: "技術に関する事を発信しています！",
   verification: {
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
     title: "ガネーシャテックブログ",
     images:"@/public/opengraph-image.png",
     description:"技術に関する事を発信しています！",
-    url:"https://ganesya-tech-blog.vercel.app/",
+    url:url,
     siteName:"ガネーシャテックブログ",
     locale: 'ja_JP',
     type: 'website',
@@ -26,13 +27,13 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: "ガネーシャテックブログ",
-    description:"https://ganesya-tech-blog.vercel.app/",
+    description:url,
     site: '@ganesya0112',
     creator: '@ganesya0112',
     images:"@/public/opengraph-image.png",
   },
   alternates: {
-    canonical: "https://ganesya-tech-blog.vercel.app/",
+    canonical: url,
   },
 
 };
