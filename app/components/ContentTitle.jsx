@@ -11,36 +11,36 @@ console.log(data.type)
 
 switch (data.type) {
     case 'プログラミング':
-        imagePath="/プログラミング.png"
+        imagePath="/program.png"
       color = 'bg-yellow-300 text-white';
       break;
     case 'セキュリティ':
-        imagePath = "/セキュリティ.png"
+        imagePath = "/security.png"
       color = 'bg-blue-500 text-white';
       break;
     case '機械学習':
-        imagePath = "/機械学習.png"
+        imagePath = "/machine.png"
       color = 'bg-green-500 text-white';
       break;
     case "読書メモ":
-        imagePath = "/読書メモ.png"
+        imagePath = "/memo.png"
       color='bg-orange-500 text-white'
       break;
     case "ツール":
-        imagePath = "/ツール.png"
+        imagePath = "/tool.png"
       color = 'bg-teal-500 text-white'
       break;
     case "アルゴリズム":
-        imagePath = "/アルゴリズム.png"
+        imagePath = "/algo.png"
       color ="bg-fuchsia-400 text-white";
       break;
     case "工作":
-        imagePath = "/工作.png"
+        imagePath = "/make.png"
       color = "bg-red-300 text-white"
       break;
 
     default:
-        imagePath = "/そのほか.png"
+        imagePath = "/other.png"
       color = 'bg-slate-500 text-white';
   }
 
