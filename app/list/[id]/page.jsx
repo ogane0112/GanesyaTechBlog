@@ -3,6 +3,7 @@ import { getFilterPosts,getOtherPosts } from '@/lib/notion/notion.ts'
 import Link from 'next/link';
 import Profile from "@/app/components/Profile"
 import ContentTitle from "@/app/components/ContentTitle"
+
 //一時間ごとにキャッシュをリセットして更新(ISR)
 export const revalidate = 3600;
 
