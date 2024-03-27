@@ -16,6 +16,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "ガネーシャテックブログ",
+    images:"@/public/opengraph-image.png",
     description:"技術に関する事を発信しています！",
     url:"https://ganesya-tech-blog.vercel.app/",
     siteName:"ガネーシャテックブログ",
@@ -28,6 +29,7 @@ export const metadata: Metadata = {
     description:"https://ganesya-tech-blog.vercel.app/",
     site: '@ganesya0112',
     creator: '@ganesya0112',
+    images:"@/public/opengraph-image.png",
   },
   alternates: {
     canonical: "https://ganesya-tech-blog.vercel.app/",
