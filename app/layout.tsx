@@ -15,7 +15,6 @@ export const metadata: Metadata = {
     yahoo: 'yahoo',
   },
   openGraph: {
-    images:"/opengraph-image.png",
     title: "ガネーシャテックブログ",
     description:"技術に関する事を発信しています！",
     url:"https://ganesya-tech-blog.vercel.app/",
