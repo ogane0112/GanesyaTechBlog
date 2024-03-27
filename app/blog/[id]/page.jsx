@@ -36,7 +36,7 @@ export default async function Page({ params }) {
       <div className="container mx-auto lg:flex lg:flex-row lg:space-x-8">
         <div className="lg:w-3/4 px-5 bg-white">
         <Breadcrumbs />
-          <div className=" text-3xl font-semibold text-center ">
+          <div className=" text-2xl font-semibold text-center ">
             <p className=" my-5">{pageInfo.title}</p>
           </div>
           <div className="text-right px-5 text-gray-500">
