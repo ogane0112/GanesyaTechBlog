@@ -6,6 +6,55 @@ import ContentTitle from "@/app/components/ContentTitle"
 
 //一時間ごとにキャッシュをリセットして更新(ISR)
 export const revalidate = 3600;
+export async function generateStaticParams() {
+  const navLinks = [
+    {
+      title: "ホーム",
+      path: `/`,
+    },
+    {
+      title: "機械学習",
+      path: `/list/機械学習`,
+    },
+    {
+      title: "読書メモ",
+      path: `/list/読書メモ`,
+    }, 
+    {
+      title: "ツール",
+      path: `/list/ツール`,
+    },
+   
+    {
+      title: "アルゴリズム",
+      path: `/list/アルゴリズム`,
+    },
+    {
+      title: "セキュリティ",
+      path: `/list/セキュリティ`,
+    },
+    {
+      title: "工作",
+      path: `/list/工作`,
+    },
+    {
+      title: "プログラミング",
+      path: `/list/プログラミング`,
+    },
+    {
+      title: "その他",
+      path: `/list/その他`,
+    },
+  ];
+
+  
+  return navLinks.map((data) => ({
+  
+  id: data.title,
+  
+  }));
+  
+  }
 
 export default async function Home({params}) {
   const decodedString = decodeURIComponent(params.id);
