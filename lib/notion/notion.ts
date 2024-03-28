@@ -11,7 +11,6 @@ const n2m = new NotionToMarkdown({ notionClient: notion });
 
 export async function getPageContent(pageId: any) {
   const mdblocks = await n2m.pageToMarkdown(pageId, 1);
-  console.log("Markdown Content:", mdblocks);
 
   return mdblocks;
 }
@@ -44,7 +43,7 @@ interface NotionPost {
       ]
     })
     const posts = response.results
-    console.log(posts)
+
 
     const postsProperties = posts.map((post:any) => {
         
@@ -84,7 +83,7 @@ interface NotionPost {
   export async function getPageInfo(pageId: string): Promise<NotionPostInfo> {
     const response = await notion.pages.retrieve({ page_id: pageId });
     const pageInfo = response.properties
-    console.log(pageInfo)
+
     
     const title = pageInfo.title.title[0]?.plain_text
     const date = pageInfo.timestamp.created_time;
@@ -117,7 +116,7 @@ interface NotionPost {
       const posts = response.results
        // 直近の3つの記事のみを取得
       const recentPosts = posts.slice(0, 3);
-      console.log(posts)
+
   
       const postsProperties = recentPosts.map((post:any) => {
           
@@ -176,7 +175,7 @@ interface NotionPost {
       ]
     })
     const posts = response.results
-    console.log(posts)
+
 
     const postsProperties = posts.map((post:any) => {
         

@@ -6,6 +6,17 @@ import Profile from "@/app/components/Profile"
 import Breadcrumbs from "@/app/components/BreadCrumbs"
 import Recent from "@/app/components/Recent"
 
+export async function generateStaticParams() {
+
+  const allData = await getAllPosts();
+  
+  return allData.map((data) => ({
+  
+  id: data.uuid,
+  
+  }));
+  
+  }
 
 
 
@@ -45,6 +56,7 @@ const MarkdownContent = ({ content }) => (
 );
 
 export default async function Page({ params }) {
+  
   const { pageContentArray, pageInfoArray } = await buildGetArticle();
 
   const pageContents = pageContentArray[params.id];
