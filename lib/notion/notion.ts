@@ -1,6 +1,6 @@
 import { NotionToMarkdown } from "notion-to-md";
 const { Client } = require("@notionhq/client");
-
+import { cache } from 'react'
 
 const notion = new Client({
   auth: process.env.NOTION_TOKEN,
@@ -315,4 +315,9 @@ interface NotionPost {
       return postsProperties
     }
 
-       
+  // Notionから記事を取得し、キャッシュする関数
+export const getItem = async (id:any) => {
+  const pageContents = await getPageContent(id)
+  const pageInfo = await getPageInfo(id)
+  return { pageContents, pageInfo }
+}
