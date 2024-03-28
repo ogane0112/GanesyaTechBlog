@@ -53,6 +53,11 @@ h1, h2, h3, h4, h5, h6 {
   
   /* レスポンシブ対応 */
   @media (max-width: 1000px) {
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+    
     h1 {
     font-size: 1.5rem;
     border-bottom: 2px solid #333;
