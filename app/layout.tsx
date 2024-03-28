@@ -10,9 +10,7 @@ const url = "https://www.ganesyatech.com/"
 export const metadata: Metadata = {
 
   metadataBase:new URL(url),
-
   title: "ガネーシャテックブログ",
-
   description: "技術に関する事を発信しています！",
 
   verification: {
@@ -54,7 +52,7 @@ export const metadata: Metadata = {
 export default function RootLayout({
 
   children,
-  
+
 }: Readonly<{
   children: React.ReactNode;
 }>) {

@@ -1,10 +1,29 @@
-import { getPageContent, getPageInfo, getAllPosts } from "@/lib/notion/notion"
+import { getPageContent, getPageInfo, getAllPosts, getItem} from "@/lib/notion/notion"
 import ReactMarkdown from 'react-markdown';
 import CodeBlock from '@/app/components/CodeBlock';
 import "@/app/blog/style.css"
 import Profile from "@/app/components/Profile"
-import Breadcrumbs  from "@/app/components/BreadCrumbs"
+import Breadcrumbs from "@/app/components/BreadCrumbs"
 import Recent from "@/app/components/Recent"
+
+
+
+
+// ビルド時にuuidを元に記事情報を取得するための関数
+async function buildGetArticle() {
+  const pageContentArray = {};
+  const pageInfoArray = {};
+
+  const allData = await getAllPosts();
+
+  for (const data of allData) {
+    const { pageContents, pageInfo } = await getItem(data.uuid);
+    pageContentArray[data.uuid] = pageContents;
+    pageInfoArray[data.uuid] = pageInfo;
+  }
+
+  return { pageContentArray, pageInfoArray };
+}
 
 // コードの```を消すための関数
 const removeCodeFences = (content) => {
@@ -26,16 +45,16 @@ const MarkdownContent = ({ content }) => (
 );
 
 export default async function Page({ params }) {
+  const { pageContentArray, pageInfoArray } = await buildGetArticle();
 
-  
-  const pageContents = await getPageContent(params.id)
-  const pageInfo = await getPageInfo(params.id)
+  const pageContents = pageContentArray[params.id];
+  const pageInfo = pageInfoArray[params.id];
 
   return (
     <>
       <div className="container mx-auto lg:flex lg:flex-row lg:space-x-8">
         <div className="lg:w-3/4 px-5 bg-white">
-        <Breadcrumbs />
+          <Breadcrumbs />
           <div className=" text-2xl font-semibold text-center ">
             <p className=" my-5">{pageInfo.title}</p>
           </div>
@@ -48,16 +67,13 @@ export default async function Page({ params }) {
               if (content.type === 'code') {
                 const codeContent = removeCodeFences(content.parent);
                 const language = getLanguage(content);
-                console.log(language)
                 return (
                   <div className="pt-3 text-sm sm:text-base md:text-lg lg:text-base xl:text-base " key={index}>
                     <CodeBlock language={language} value={codeContent} />
                   </div>
                 );
               }
-              return (
-                <MarkdownContent key={index} content={formattedMarkdown} />
-              )
+              return <MarkdownContent key={index} content={formattedMarkdown} />
             })}
           </div>
           <Recent />
@@ -66,7 +82,6 @@ export default async function Page({ params }) {
           <Profile />
         </div>
       </div>
-     
     </>
   )
 }
