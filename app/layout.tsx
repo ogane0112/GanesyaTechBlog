@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     description:url,
     site: '@ganesya0112',
     creator: '@ganesya0112',
-    images:"/opengraph-image.png",
+    images:"/twitter-image.png",
 
   },
   alternates: {
