@@ -19,6 +19,9 @@ export async function generateStaticParams() {
   }
 
 
+  export const revalidate = 3600
+
+
 
 // ビルド時にuuidを元に記事情報を取得するための関数
 async function buildGetArticle() {
@@ -56,7 +59,7 @@ const MarkdownContent = ({ content }) => (
 );
 
 export default async function Page({ params }) {
-  
+
   const { pageContentArray, pageInfoArray } = await buildGetArticle();
 
   const pageContents = pageContentArray[params.id];

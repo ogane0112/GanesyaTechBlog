@@ -8,6 +8,8 @@ const inter = Inter({ subsets: ["latin"] });
 
 const url = "https://www.ganesyatech.com/"
 
+export const revalidate = 3600
+
 export const metadata: Metadata = {
 
   metadataBase:new URL(url),
