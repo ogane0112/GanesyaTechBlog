@@ -17,7 +17,25 @@ export async function generateStaticParams() {
   }));
   
   }
+export async function generateMetadata({ params, searchParams }, parent) {
 
+  const id = params.id;
+
+  const { pageContentArray, pageInfoArray } = await buildGetArticle();
+
+  const pageInfo = pageInfoArray[params.id];
+  
+
+
+  const previousImages = (await parent).openGraph?.images || []
+ 
+  return {
+    title: pageInfo.title,
+    openGraph: {
+      images: [previousImages],
+    },
+  }
+}
 
   export const revalidate = 3600
 
